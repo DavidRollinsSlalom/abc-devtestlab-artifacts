@@ -1,8 +1,8 @@
 {
   "$schema": "https://raw.githubusercontent.com/Azure/azure-devtestlab/master/schemas/2016-11-28/dtlArtifacts.json",
-  "title": "abc-sqlyog-windows",
+  "title": "abc-dotnetcore-sdk",
   "publisher": "davidrollinsslalom",
-  "description": "Installs sqlyog using the Chocolatey package manager",
+  "description": "Installs .Net Core SDK using the Chocolatey package manager",
   "tags": [
     "Windows",
     "sqlyog"
