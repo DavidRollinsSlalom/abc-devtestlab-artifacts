@@ -60,7 +60,7 @@ switch ($msgBoxInput) {
             $BitBucketAuthURL = "https://" + $BitBucketUsername + ":" + $BitBucketCred.GetNetworkCredential().Password + "@bitbucket.org"
             Sleep -Seconds 10
             Get-BitBucketAllRepo | Select-Object -ExpandProperty links | Select-Object -ExpandProperty clone | Where-Object { $_.Name -eq 'https' } | Select-Object -ExpandProperty href | ForEach-Object { $url = $_; $url = $url.Replace($OldBitBucketAuthURL, $BitBucketAuthURL); git.exe clone $url -v }
-            Write-Host "Success! Cloned CI/CD Lab Repo!" -ForegroundColor Green
+			Write-Host "Success! Cloned CI/CD Lab Repo!" -ForegroundColor Green
         }
         catch {
             $ErrorMessage = $_.Exception.Message
@@ -141,7 +141,9 @@ switch ($msgBoxInput) {
                     $BitBucketAuthURL = "https://" + $BitBucketUsername + ":" + $BitBucketCred.GetNetworkCredential().Password + "@bitbucket.org"
                     Sleep -Seconds 10
                     Get-BitBucketAllRepo | Select-Object -ExpandProperty links | Select-Object -ExpandProperty clone | Where-Object { $_.Name -eq 'https' } | Select-Object -ExpandProperty href | ForEach-Object { $url = $_; $url = $url.Replace($OldBitBucketAuthURL, $BitBucketAuthURL); git.exe clone $url -v }
-                    Write-Host "Success! Cloned CI/CD Lab Repo!" -ForegroundColor Green
+                    Set-Location C:\Dev\$BitBucketUserName\
+                    git.exe update-index --assume-unchanged .\src\Web\web.config
+					Write-Host "Success! Cloned CI/CD Lab Repo!" -ForegroundColor Green
                 }
                 catch {
                     $ErrorMessage = $_.Exception.Message
